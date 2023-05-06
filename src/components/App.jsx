@@ -36,9 +36,7 @@ export default class App extends Component {
     this.reset();
   };
 
-  changeFilter = e => {
-    this.setState({ filter: e.currentTarget.value });
-  };
+  handleChangeFilter = e => this.setState({ filter: e.currentTarget.value });
 
   handleInputState = evt =>
     this.setState({ [evt.currentTarget.name]: evt.target.value });
@@ -62,7 +60,7 @@ export default class App extends Component {
     return (
       <>
         <ContactForm addNewContact={this.addNewContact} />
-        <Filter value={filter} onChange={this.changeFilter} />
+        <Filter value={filter} onChange={this.handleChangeFilter} />
         <ContactList
           visibleContacts={visibleContacts}
           deleteContact={this.deleteContact}

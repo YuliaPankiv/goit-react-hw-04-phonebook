@@ -1,5 +1,3 @@
-import React, { Component } from 'react';
-
 const Filter = ({ value, onChange }) => (
   <label>
     Find ny name
