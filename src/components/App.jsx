@@ -14,8 +14,6 @@ export default class App extends Component {
       { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
     ],
     filter: '',
-    name: '',
-    number: '',
   };
 
   deleteContact = contactId => {
@@ -30,10 +28,17 @@ export default class App extends Component {
       ...data,
     };
 
-    this.setState(prev => ({
-      contacts: [...prev.contacts, newContact],
-    }));
-    this.reset();
+    this.setState(prev => {
+      let isFind = prev.contacts.find(({ name }) => name === newContact.name);
+
+      let add = !isFind
+        ? {
+            contacts: [...prev.contacts, newContact],
+          }
+        : alert('arr');
+      return add;
+    });
+    // this.reset();
   };
 
   handleChangeFilter = e => this.setState({ filter: e.currentTarget.value });
@@ -59,7 +64,9 @@ export default class App extends Component {
     const visibleContacts = this.getVisibleContacts();
     return (
       <>
+        <h1>Phonebook</h1>
         <ContactForm addNewContact={this.addNewContact} />
+        <h2>Contacts</h2>
         <Filter value={filter} onChange={this.handleChangeFilter} />
         <ContactList
           visibleContacts={visibleContacts}
