@@ -24,14 +24,14 @@ export default class App extends Component {
     }));
   };
 
-  addNewContact = newContact => {
-    const newUser = {
+  addNewContact = data => {
+    const newContact = {
       id: nanoid(),
-      ...newContact,
+      ...data,
     };
 
     this.setState(prev => ({
-      contacts: [...prev.contacts, newUser],
+      contacts: [...prev.contacts, newContact],
     }));
     this.reset();
   };
