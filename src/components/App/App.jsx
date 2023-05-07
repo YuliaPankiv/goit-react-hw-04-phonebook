@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { nanoid } from 'nanoid';
-
-import Filter from './filter/Filter';
-import ContactList from './contactList/ContactList';
-import ContactForm from './form/ContactForm';
+import Filter from '../filter/Filter';
+import ContactList from '../contactList/ContactList';
+import ContactForm from '../form/ContactForm';
+import { Container } from './App.styled';
 
 export default class App extends Component {
   state = {
@@ -35,10 +35,9 @@ export default class App extends Component {
         ? {
             contacts: [...prev.contacts, newContact],
           }
-        : alert('arr');
+        : alert(`${data.name} is already in contacts.`);
       return add;
     });
-    // this.reset();
   };
 
   handleChangeFilter = e => this.setState({ filter: e.currentTarget.value });
@@ -63,7 +62,7 @@ export default class App extends Component {
     const { filter } = this.state;
     const visibleContacts = this.getVisibleContacts();
     return (
-      <>
+      <Container>
         <h1>Phonebook</h1>
         <ContactForm addNewContact={this.addNewContact} />
         <h2>Contacts</h2>
@@ -72,7 +71,7 @@ export default class App extends Component {
           visibleContacts={visibleContacts}
           deleteContact={this.deleteContact}
         />
-      </>
+      </Container>
     );
   }
 }

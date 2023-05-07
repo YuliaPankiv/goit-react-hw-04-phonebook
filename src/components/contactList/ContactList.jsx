@@ -1,16 +1,20 @@
+import { Delete, Item, List } from './List.styled';
+
 const ContactList = ({ visibleContacts, deleteContact }) => {
   return (
     <div>
-      <ul>
+      <List>
         {visibleContacts.map(({ name, id, number }) => {
           return (
-            <li key={id}>
-              {name}: {number}
-              <button onClick={() => deleteContact(id)}>Delete</button>
-            </li>
+            <Item key={id}>
+              <p>
+                {name}: {number}
+              </p>
+              <Delete onClick={() => deleteContact(id)}>Delete</Delete>
+            </Item>
           );
         })}
-      </ul>
+      </List>
     </div>
   );
 };
