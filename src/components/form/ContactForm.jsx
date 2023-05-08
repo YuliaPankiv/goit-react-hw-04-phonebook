@@ -18,12 +18,13 @@ export default class ContactForm extends Component {
 
   handleOnSubmit = e => {
     e.preventDefault();
+    console.log(e);
     this.props.addNewContact({ ...this.state });
     this.reset();
   };
 
   reset = () => {
-    this.setState({ name: '', number: '' });
+    this.setState({ name: '' });
   };
 
   render() {

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { nanoid } from 'nanoid';
 import Filter from '../filter/Filter';
-import ContactList from '../contactList/ContactList';
+import { ContactList } from '../contactList/ContactList';
 import ContactForm from '../form/ContactForm';
 import { Container } from './App.styled';
 
@@ -27,27 +27,21 @@ export default class App extends Component {
       id: nanoid(),
       ...data,
     };
-
     this.setState(prev => {
       let isFind = prev.contacts.find(({ name }) => name === newContact.name);
 
-      let add = !isFind
-        ? {
-            contacts: [...prev.contacts, newContact],
-          }
-        : alert(`${data.name} is already in contacts.`);
-      return add;
+      if (!isFind) {
+        return { contacts: [...prev.contacts, newContact] };
+      } else {
+        return alert(`${data.name} is already in contacts.`);
+      }
     });
   };
-
-  handleChangeFilter = e => this.setState({ filter: e.currentTarget.value });
-
-  handleInputState = evt =>
-    this.setState({ [evt.currentTarget.name]: evt.target.value });
 
   reset = () => {
     this.setState({ name: '', number: '' });
   };
+  handleChangeFilter = e => this.setState({ filter: e.currentTarget.value });
 
   getVisibleContacts = () => {
     const { contacts, filter } = this.state;
@@ -66,11 +60,11 @@ export default class App extends Component {
   //   this.setState({ contacts: parsedContacts });
   // }
 
-  // componentDidUpdate(prevProps, prevState) {
-  //   if (this.state.contacts !== prevState.contacts) {
-  //     localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
-  //   }
-  // }
+  componentDidUpdate(_, prevState) {
+    if (this.state.contacts !== prevState.contacts) {
+      localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
+    }
+  }
 
   render() {
     const { filter } = this.state;

@@ -1,22 +1,26 @@
-import { Delete, Item, List } from './List.styled';
+import PropTypes from 'prop-types';
+import { ItemContact } from 'components/Item/Item';
+import { List } from './List.styled';
 
-const ContactList = ({ visibleContacts, deleteContact }) => {
+export const ContactList = ({ visibleContacts, deleteContact }) => {
   return (
     <div>
       <List>
-        {visibleContacts.map(({ name, id, number }) => {
-          return (
-            <Item key={id}>
-              <p>
-                {name}: {number}
-              </p>
-              <Delete onClick={() => deleteContact(id)}>Delete</Delete>
-            </Item>
-          );
-        })}
+        <ItemContact
+          visibleContacts={visibleContacts}
+          deleteContact={deleteContact}
+        />
       </List>
     </div>
   );
 };
-
-export default ContactList;
+ContactList.propTypes = {
+  visibleContacts: PropTypes.arrayOf(
+    PropTypes.exact({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      number: PropTypes.string.isRequired,
+    }).isRequired
+  ).isRequired,
+  deleteContact: PropTypes.func.isRequired,
+};
