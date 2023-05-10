@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { Label, Wrapper } from './Filter.styled';
+import { Label } from './Filter.styled';
 
 const Filter = ({ filterValue, onChange }) => (
   <>
