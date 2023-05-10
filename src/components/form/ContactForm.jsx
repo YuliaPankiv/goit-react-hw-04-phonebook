@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import { nanoid } from 'nanoid';
 
 import { Button, Form, Label } from './Form.styled';
 
@@ -15,8 +14,6 @@ export default class ContactForm extends Component {
 
     this.setState({ [name]: value });
   };
-  nameInputId = nanoid();
-  numberInputId = nanoid();
 
   handleOnSubmit = e => {
     e.preventDefault();
