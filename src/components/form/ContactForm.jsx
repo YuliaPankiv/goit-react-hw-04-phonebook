@@ -21,7 +21,7 @@ export default class ContactForm extends Component {
     const availableContacts = this.props.availableContacts;
 
     if (availableContacts.find(contact => contact.name === this.state.name)) {
-      this.onNameExists();
+      alert(`${this.state.name} is already in contacts list`);
     } else {
       this.props.addNewContact(this.state);
       this.reset();
@@ -32,10 +32,6 @@ export default class ContactForm extends Component {
     this.setState({ name: '', number: '' });
   };
 
-  onNameExists = () => {
-    alert(`${this.state.name} is already in contacts list`);
-    this.setState({ name: this.state.name, number: this.state.number });
-  };
   render() {
     const { name, number } = this.state;
     return (
