@@ -1,23 +1,23 @@
 import PropTypes from 'prop-types';
 import { Label, Wrapper } from './Filter.styled';
 
-const Filter = ({ value, onChange }) => (
-  <Wrapper>
+const Filter = ({ filterValue, onChange }) => (
+  <>
     <Label>
       Find ny name
       <input
         type="text"
         name="filter"
-        value={value}
+        value={filterValue}
         required
         onChange={onChange}
       />
     </Label>
-  </Wrapper>
+  </>
 );
 
 export default Filter;
 Filter.propTypes = {
   onChange: PropTypes.func.isRequired,
-  value: PropTypes.string.isRequired,
+  filterValue: PropTypes.string.isRequired,
 };

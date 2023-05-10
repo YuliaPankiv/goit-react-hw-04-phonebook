@@ -4,14 +4,16 @@ import { List } from './List.styled';
 
 export const ContactList = ({ visibleContacts, deleteContact }) => {
   return (
-    <div>
-      <List>
+    <List>
+      {visibleContacts.map(currentContact => (
         <ItemContact
-          visibleContacts={visibleContacts}
+          key={currentContact.id}
           deleteContact={deleteContact}
+          currentContact={currentContact}
+          onDeleteContact={deleteContact}
         />
-      </List>
-    </div>
+      ))}
+    </List>
   );
 };
 ContactList.propTypes = {

@@ -1,5 +1,7 @@
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { nanoid } from 'nanoid';
+
 import { Button, Form, Label } from './Form.styled';
 
 export default class ContactForm extends Component {
@@ -18,15 +20,25 @@ export default class ContactForm extends Component {
 
   handleOnSubmit = e => {
     e.preventDefault();
-    console.log(e);
-    this.props.addNewContact({ ...this.state });
-    this.reset();
+
+    const availableContacts = this.props.availableContacts;
+
+    if (availableContacts.find(contact => contact.name === this.state.name)) {
+      this.onNameExists();
+    } else {
+      this.props.addNewContact(this.state);
+      this.reset();
+    }
   };
 
   reset = () => {
-    this.setState({ name: '' });
+    this.setState({ name: '', number: '' });
   };
 
+  onNameExists = () => {
+    alert(`${this.state.name} is already in contacts list`);
+    this.setState({ name: this.state.name, number: this.state.number });
+  };
   render() {
     const { name, number } = this.state;
     return (
@@ -62,3 +74,7 @@ export default class ContactForm extends Component {
     );
   }
 }
+
+ContactForm.propTypes = {
+  addNewContact: PropTypes.func.isRequired,
+};
