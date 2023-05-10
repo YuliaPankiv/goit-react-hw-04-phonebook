@@ -1,17 +1,18 @@
 import PropTypes from 'prop-types';
 import { ItemContact } from 'components/Item/Item';
-import { List } from './List.styled';
+import { Item, List } from './List.styled';
 
 export const ContactList = ({ visibleContacts, deleteContact }) => {
   return (
     <List>
       {visibleContacts.map(currentContact => (
-        <ItemContact
-          key={currentContact.id}
-          deleteContact={deleteContact}
-          currentContact={currentContact}
-          onDeleteContact={deleteContact}
-        />
+        <Item key={currentContact.id}>
+          <ItemContact
+            deleteContact={deleteContact}
+            currentContact={currentContact}
+            onDeleteContact={deleteContact}
+          />
+        </Item>
       ))}
     </List>
   );

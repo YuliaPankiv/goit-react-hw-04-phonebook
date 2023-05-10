@@ -1,16 +1,16 @@
 import PropTypes from 'prop-types';
-import { Delete, Item } from '../contactList/List.styled';
+import { Delete } from '../contactList/List.styled';
 
 export const ItemContact = ({
   currentContact: { id, name, number },
   deleteContact,
 }) => (
-  <Item>
+  <>
     <p>
       {name}: {number}
     </p>
     <Delete onClick={() => deleteContact(id)}>Delete</Delete>
-  </Item>
+  </>
 );
 
 ItemContact.propTypes = {
