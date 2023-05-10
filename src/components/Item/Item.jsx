@@ -14,10 +14,10 @@ export const ItemContact = ({
 );
 
 ItemContact.propTypes = {
-  deleteContact: PropTypes.func.isRequired,
   currentContact: PropTypes.exact({
     id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     number: PropTypes.string.isRequired,
   }).isRequired,
+  deleteContact: PropTypes.func.isRequired,
 };

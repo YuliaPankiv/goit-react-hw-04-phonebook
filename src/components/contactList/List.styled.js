@@ -42,7 +42,7 @@ export const Delete = styled.button`
   margin-left: 40px;
   border-color: #ccc;
   border-radius: 4px;
-
+font-size: 16px;
 
  &:hover {
     background-color: #449cf4;
