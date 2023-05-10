@@ -10,7 +10,6 @@ export const ContactList = ({ visibleContacts, deleteContact }) => {
           <ItemContact
             deleteContact={deleteContact}
             currentContact={currentContact}
-            onDeleteContact={deleteContact}
           />
         </Item>
       ))}
