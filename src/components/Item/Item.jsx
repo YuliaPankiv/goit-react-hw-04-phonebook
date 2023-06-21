@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { Delete } from '../contactList/List.styled';
+import { Delete } from '../ContactList/ContactList.styled';
 
 export const ItemContact = ({
   currentContact: { id, name, number },

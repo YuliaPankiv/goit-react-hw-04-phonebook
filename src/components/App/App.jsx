@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
 import { nanoid } from 'nanoid';
-import ContactForm from '../form/ContactForm';
-import Filter from '../filter/Filter';
+import ContactForm from '../ContactForm/ContactForm';
+import Filter from '../Filter/Filter';
 import { Container } from './App.styled';
-import { ContactList } from 'components/contactList/ContactList';
+import { ContactList } from 'components/ContactList/ContactList';
 import startContacts from '../../startContacts';
+
 const App = () => {
   const [contacts, setContacts] = useState(
     () => JSON.parse(localStorage.getItem('contacts')) ?? startContacts
@@ -50,10 +51,12 @@ const App = () => {
       <ContactForm addNewContact={addNewContact} />
       <h2>Contacts</h2>
       <Filter filterValue={filter} onChange={handleChangeFilter} />
-      <ContactList
-        visibleContacts={visibleContacts}
-        deleteContact={deleteContact}
-      />
+      {contacts.length && (
+        <ContactList
+          visibleContacts={visibleContacts}
+          deleteContact={deleteContact}
+        />
+      )}
     </Container>
   );
 };

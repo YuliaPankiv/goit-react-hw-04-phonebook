@@ -1,33 +1,36 @@
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 
-import { Button, Form, Label } from './Form.styled';
+import { Button, Form, Label } from './ContactForm.styled';
 
 const ContactForm = ({ addNewContact }) => {
-  const [form, setForm] = useState({
-    name: '',
-    number: '',
-  });
+  const [name, setName] = useState('');
+  const [number, setNumber] = useState('');
 
-  const handleInputState = e => {
-    const { name, value } = e.target;
-    setForm(prevForm => {
-      return {
-        ...prevForm,
-        [name]: value,
-      };
-    });
+  const handleChange = e => {
+    switch (e.target.name) {
+      case 'name':
+        setName(e.target.value);
+        break;
+      case 'number':
+        setNumber(e.target.value);
+        break;
+
+      default:
+        break;
+    }
   };
 
   const handleOnSubmit = e => {
     e.preventDefault();
-    addNewContact({ ...form });
+    addNewContact({ name, number });
 
     reset();
   };
 
   const reset = () => {
-    setForm({ name: '', number: '' });
+    setName('');
+    setNumber('');
   };
   return (
     <Form onSubmit={handleOnSubmit}>
@@ -36,11 +39,11 @@ const ContactForm = ({ addNewContact }) => {
         <input
           type="text"
           name="name"
-          value={form.name}
+          value={name}
           pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
           title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
           required
-          onChange={handleInputState}
+          onChange={handleChange}
         />
       </Label>
       <Label>
@@ -48,11 +51,11 @@ const ContactForm = ({ addNewContact }) => {
         <input
           type="tel"
           name="number"
-          value={form.number}
+          value={number}
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
           required
-          onChange={handleInputState}
+          onChange={handleChange}
         />
       </Label>
       <Button type="submit">Add contact</Button>
