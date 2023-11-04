@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
-import { Delete } from '../ContactList/ContactList.styled';
+import { CiTrash } from "react-icons/ci";
+import { Delete } from 'components/contactList/ContactList.styled';
 
 export const ItemContact = ({
   currentContact: { id, name, number },
@@ -7,9 +8,9 @@ export const ItemContact = ({
 }) => (
   <>
     <p>
-      {name}: {number}
+      <span>{name}</span>: <span>{number}</span>
     </p>
-    <Delete onClick={() => deleteContact(id)}>Delete</Delete>
+    <Delete onClick={() => deleteContact(id)}><CiTrash/></Delete>
   </>
 );
 

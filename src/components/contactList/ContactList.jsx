@@ -3,8 +3,9 @@ import { ItemContact } from 'components/Item/Item';
 import { Item, List } from './ContactList.styled';
 
 export const ContactList = ({ visibleContacts, deleteContact }) => {
-  return (
-    <List>
+  return (<>   
+  <h2>List of contacts</h2>
+  <List>
       {visibleContacts.map(currentContact => (
         <Item key={currentContact.id}>
           <ItemContact
@@ -14,6 +15,7 @@ export const ContactList = ({ visibleContacts, deleteContact }) => {
         </Item>
       ))}
     </List>
+</>
   );
 };
 ContactList.propTypes = {
