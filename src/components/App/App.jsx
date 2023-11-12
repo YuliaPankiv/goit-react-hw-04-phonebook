@@ -5,6 +5,7 @@ import { Container } from './App.styled';
 import startContacts from '../../startContacts';
 import Filter from 'components/filter/Filter';
 import { ContactList } from 'components/contactList/ContactList';
+import { Toggle } from 'helpers/toggle';
 
 const App = () => {
   const [contacts, setContacts] = useState(
@@ -48,16 +49,18 @@ const App = () => {
   return (
     <Container>
       <h1>Phone book</h1>
-      <ContactForm addNewContact={addNewContact} />
-      <Filter filterValue={filter} onChange={handleChangeFilter} />
-      {contacts.length && (
-        <ContactList
-          visibleContacts={visibleContacts}
-          deleteContact={deleteContact}
-        />
+
+      <Toggle children={<ContactForm addNewContact={addNewContact} />} />
+      {contacts.length > 0 && (
+        <>
+          <Filter filterValue={filter} onChange={handleChangeFilter} />
+          <ContactList
+            visibleContacts={visibleContacts}
+            deleteContact={deleteContact}
+          />
+        </>
       )}
     </Container>
   );
 };
 export default App;
-

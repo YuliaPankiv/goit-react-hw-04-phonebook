@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { CiTrash } from "react-icons/ci";
+import { SlUserUnfollow } from "react-icons/sl";
 import { Delete } from 'components/contactList/ContactList.styled';
 
 export const ItemContact = ({
@@ -10,7 +10,7 @@ export const ItemContact = ({
     <p>
       <span>{name}</span>: <span>{number}</span>
     </p>
-    <Delete onClick={() => deleteContact(id)}><CiTrash/></Delete>
+    <Delete onClick={() => deleteContact(id)}><SlUserUnfollow /></Delete>
   </>
 );
 

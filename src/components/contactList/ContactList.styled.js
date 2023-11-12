@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-export const List = styled.ul`
+export const List = styled.ol`
   display: flex;
   flex-direction: column;
   list-style-type: none;

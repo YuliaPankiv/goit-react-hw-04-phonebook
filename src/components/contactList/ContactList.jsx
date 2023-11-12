@@ -4,7 +4,6 @@ import { Item, List } from './ContactList.styled';
 
 export const ContactList = ({ visibleContacts, deleteContact }) => {
   return (<>   
-  <h2>List of contacts</h2>
   <List>
       {visibleContacts.map(currentContact => (
         <Item key={currentContact.id}>
