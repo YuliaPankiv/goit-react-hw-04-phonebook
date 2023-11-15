@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
 import { nanoid } from 'nanoid';
-import ContactForm from '../ContactForm/ContactForm';
-import { Container } from './App.styled';
+// import { Container } from './App.styled';
 import startContacts from '../../startContacts';
 import Filter from 'components/filter/Filter';
 import { ContactList } from 'components/contactList/ContactList';
 import { Toggle } from 'helpers/toggle';
+import { Container } from '@mui/material';
+import { ContactForm } from 'components/ContactForm/ContactForm';
 
 const App = () => {
   const [contacts, setContacts] = useState(
@@ -47,20 +48,23 @@ const App = () => {
   const visibleContacts = getVisibleContacts();
 
   return (
-    <Container>
-      <h1>Phone book</h1>
+    <>
 
-      <Toggle children={<ContactForm addNewContact={addNewContact} />} />
-      {contacts.length > 0 && (
-        <>
-          <Filter filterValue={filter} onChange={handleChangeFilter} />
-          <ContactList
-            visibleContacts={visibleContacts}
-            deleteContact={deleteContact}
-          />
-        </>
-      )}
-    </Container>
+      <Container sx={{ mt: '1rem' }}>
+        <h1>Phone book</h1>
+
+        <Toggle children={<ContactForm addNewContact={addNewContact} />} />
+        {contacts.length > 0 && (
+          <>
+            <Filter filterValue={filter} onChange={handleChangeFilter} />
+            <ContactList
+              visibleContacts={visibleContacts}
+              deleteContact={deleteContact}
+            />
+          </>
+        )}
+      </Container>
+    </>
   );
 };
 export default App;

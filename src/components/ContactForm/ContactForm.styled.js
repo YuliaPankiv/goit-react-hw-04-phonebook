@@ -38,4 +38,5 @@ export const Button = styled.button`
     background-color: #449cf4;
     border-color: #449cf4;
     color: white;
+  }
 `;

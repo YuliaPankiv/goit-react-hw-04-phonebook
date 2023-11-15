@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 
 import { Button, Form, Label } from './ContactForm.styled';
 
-const ContactForm = ({ addNewContact }) => {
+export const ContactForm = ({ addNewContact }) => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
@@ -63,7 +63,6 @@ const ContactForm = ({ addNewContact }) => {
   );
 };
 
-export default ContactForm;
 
 ContactForm.propTypes = {
   addNewContact: PropTypes.func.isRequired,
